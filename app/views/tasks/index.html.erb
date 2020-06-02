@@ -1,0 +1,19 @@
+<h1>Tasks index</h1>
+
+<ul>
+<% @tasks.each do |task| %>
+  <li>
+    <% if task.completed == true %>
+        <i class="fas fa-check-circle"></i>
+    <% else %>
+        <i class="far fa-square"></i>
+    <% end %>
+      <%= link_to "  #{task.title}", task_path(task.id), class: 'listed-item' %>
+      <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure ?"} do %>
+        <i class="far fa-trash-alt"></i>
+        <% end %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to '+ Add a new task', new_task_path, class: "add-new-task" %>
